@@ -10,11 +10,14 @@ import { getUserById } from "@/lib/actions/user.actions";
 const Profile = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;
   const { userId } = auth();
+  console.log("userId",userId)
 
   if (!userId) redirect("/sign-in");
 
   const user = await getUserById(userId);
-  const images = await getUserImages({ page, userId: user._id });
+  const images = await getUserImages({ page, userId: user?._id });
+
+  if(!user) return ""
 
   return (
     <>

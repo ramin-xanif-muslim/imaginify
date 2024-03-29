@@ -30,6 +30,7 @@ export async function getUserById(userId: string) {
 
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
+    console.log("error",error)
     handleError(error);
   }
 }
